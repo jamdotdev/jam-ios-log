@@ -21,9 +21,9 @@ Alternatively, you can add the package [directly via Xcode](https://developer.ap
 ## Usage
 
 ```swift
-import Jam
+import JamLog
 
-Jam.debug("Hello world!")
+JamLog.debug("Hello world!")
 ```
 
 Also supports `info`, `warn`, and `error`.

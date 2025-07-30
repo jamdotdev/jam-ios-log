@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-  name: "Jam",
+  name: "JamLog",
   platforms: [
     .iOS(.v17),
   ],
   products: [
     .library(
-      name: "Jam",
-      targets: ["Jam"]
+      name: "JamLog",
+      targets: ["JamLog"]
     ),
   ],
   targets: [
     .target(
-      name: "Jam"
+      name: "JamLog"
     ),
   ]
 )
