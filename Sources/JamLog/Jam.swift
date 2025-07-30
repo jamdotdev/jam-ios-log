@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Jam {
+public enum JamLog {
   public static func debug(
     _ message: String,
     file: String = #fileID,
