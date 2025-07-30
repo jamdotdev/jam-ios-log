@@ -1,0 +1,122 @@
+# Exclude checkout directories for common package managers
+--exclude Carthage,Pods,.build
+
+# options
+--swiftversion 6.0
+--languagemode 5
+--self remove # redundantSelf
+--importgrouping testable-bottom # sortedImports
+--commas always # trailingCommas
+--trimwhitespace always # trailingSpace
+--indent 2 #indent
+--ifdef no-indent #indent
+--indentstrings true #indent
+--wraparguments before-first # wrapArguments
+--wrapparameters before-first # wrapArguments
+--wrapcollections before-first # wrapArguments
+--wrapconditions before-first # wrapArguments
+--wrapreturntype never #wrapArguments
+--wrapeffects never #wrapArguments
+--closingparen balanced # wrapArguments
+--wraptypealiases before-first # wrapArguments
+--funcattributes prev-line # wrapAttributes
+--computedvarattrs prev-line # wrapAttributes
+--storedvarattrs same-line # wrapAttributes
+--complexattrs prev-line # wrapAttributes
+--typeattributes prev-line # wrapAttributes
+--wrapternary before-operators # wrap
+
+# organizeDeclarations
+--organization-mode visibility
+--organizetypes class,struct,enum,extension,actor
+--visibilityorder beforeMarks,nestedType,staticProperty,staticPropertyWithBody,staticMethod,classPropertyWithBody,classMethod,swiftUIPropertyWrapper,instanceProperty,instanceLifecycle,open,public,package,internal,fileprivate,private
+--sortswiftuiprops first-appearance-sort
+--mark-categories false
+
+--extensionacl on-declarations # extensionAccessControl
+--patternlet inline # hoistPatternLet
+--propertytypes inferred # redundantType, propertyTypes
+--emptybraces no-space # emptyBraces
+--ranges preserve # spaceAroundOperators
+--operatorfunc no-space # spaceAroundOperators
+--someAny disabled # opaqueGenericParameters
+--elseposition same-line # elseOnSameLine
+--guardelse next-line # elseOnSameLine
+--onelineforeach convert # preferForLoop
+--shortoptionals always # typeSugar
+--semicolons never # semicolons
+--doccomments preserve # docComments
+--strip-unused-args closure-only # unusedArugments
+--maxwidth 120 # wrap
+
+# rules
+--rules anyObjectProtocol
+--rules blankLinesBetweenScopes
+--rules consecutiveSpaces
+--rules consecutiveBlankLines
+--rules duplicateImports
+--rules extensionAccessControl
+--rules environmentEntry
+--rules hoistPatternLet
+--rules indent
+--rules organizeDeclarations
+--rules redundantParens
+--rules redundantReturn
+--rules redundantSelf
+--rules redundantType
+--rules redundantPattern
+--rules redundantGet
+--rules redundantFileprivate
+--rules redundantRawValues
+--rules redundantEquatable
+--rules sortImports
+--rules sortDeclarations
+--rules strongifiedSelf
+--rules trailingCommas
+--rules trailingSpace
+--rules linebreakAtEndOfFile
+--rules typeSugar
+--rules wrap
+--rules wrapMultilineStatementBraces
+--rules wrapArguments
+--rules wrapAttributes
+--rules braces
+--rules redundantClosure
+--rules redundantInit
+--rules redundantVoidReturnType
+--rules redundantOptionalBinding
+--rules redundantInternal
+--rules redundantProperty
+--rules unusedArguments
+--rules spaceInsideBrackets
+--rules spaceInsideBraces
+--rules spaceAroundBraces
+--rules spaceInsideParens
+--rules spaceAroundParens
+--rules spaceAroundOperators
+--rules enumNamespaces
+--rules blockComments
+--rules docComments
+--rules docCommentsBeforeModifiers
+--rules spaceAroundComments
+--rules spaceInsideComments
+--rules blankLinesAtStartOfScope
+--rules blankLinesAtEndOfScope
+--rules emptyBraces
+--rules andOperator
+--rules opaqueGenericParameters
+--rules genericExtensions
+--rules trailingClosures
+--rules elseOnSameLine
+--rules sortTypealiases
+--rules preferForLoop
+--rules conditionalAssignment
+--rules wrapMultilineConditionalAssignment
+--rules void
+--rules consistentSwitchCaseSpacing
+--rules semicolons
+--rules propertyTypes
+--rules blankLinesBetweenChainedFunctions
+--rules unusedPrivateDeclarations
+--rules emptyExtensions
+--rules preferCountWhere
