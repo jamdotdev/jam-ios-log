@@ -27,3 +27,30 @@ JamLog.debug("Hello world!")
 ```
 
 Also supports `info`, `warn`, and `error`.
+
+## SwiftLog
+
+You can integrate with [SwiftLog](https://github.com/apple/swift-log) by importing `JamSwiftLog` and bootstraping the logging system:
+
+```swift
+import JamSwiftLog
+import Logging
+
+LoggingSystem.bootstrap { label in
+  JamLogHandler(label: label)
+}
+```
+
+Alternatively, you can add JamLog to your existing logging system by using the `MultiplexLogHandler`. Assuming you are already using the `StreamLogHandler`:
+
+```swift
+import JamSwiftLog
+import Logging
+
+LoggingSystem.bootstrap { label in
+  MultiplexLogHandler([
+    StreamLogHandler.standardOutput(label: label),
+    JamLogHandler(label: label)
+  ])
+}
+```

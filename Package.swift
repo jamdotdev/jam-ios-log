@@ -12,10 +12,24 @@ let package = Package(
       name: "JamLog",
       targets: ["JamLog"]
     ),
+    .library(
+      name: "JamSwiftLog",
+      targets: ["JamSwiftLog"]
+    ),
+  ],
+  dependencies: [
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.5.0"),
   ],
   targets: [
     .target(
       name: "JamLog"
+    ),
+    .target(
+      name: "JamSwiftLog",
+      dependencies: [
+        "JamLog",
+        .product(name: "Logging", package: "swift-log"),
+      ]
     ),
   ]
 )
