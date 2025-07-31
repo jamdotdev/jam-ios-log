@@ -45,6 +45,7 @@ Alternatively, you can add JamLog to your existing logging system by using the `
 
 ```swift
 import JamSwiftLog
+import Logging
 
 LoggingSystem.bootstrap { label in
   MultiplexLogHandler([
