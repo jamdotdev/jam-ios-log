@@ -27,7 +27,13 @@ public enum JamLog {
     log(message, level: .error, file: file, function: function, line: line)
   }
 
-  private static func log(_ message: String, level: LogMessage.Level, file: String, function: String, line: UInt) {
+  public static func log(
+    _ message: String,
+    level: LogMessage.Level,
+    file: String = #fileID,
+    function: String = #function,
+    line: UInt = #line
+  ) {
     Task.detached {
       let logMessage = LogMessage(
         level: level,
