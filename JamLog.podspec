@@ -18,7 +18,7 @@ This framework lets you send log events to Jam for iOS so that they can be assoc
   s.homepage         = 'https://github.com/jamdotdev/jam-ios-log'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'mattcomi' => 'matt@jam.dev' }
-  s.source           = { :git => 'https://github.com/jamdotdev/jam-ios-log', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/jamdotdev/jam-ios-log.git', :branch => "cocoapods" }
 
   s.ios.deployment_target = '17.0'
 
