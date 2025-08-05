@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -7,6 +8,7 @@ extension UIApplication {
   }
 }
 
+@available(iOS 17, *)
 extension UIWindow {
   fileprivate func registerForSceneCaptureStateChanges(completion: @escaping @MainActor (UISceneCaptureState) -> Void) {
     registerForTraitChanges([UITraitSceneCaptureState.self]) { (self: Self, _) in
@@ -27,6 +29,7 @@ class Logger {
 
   private var stream: AsyncStream<LogMessage>
   private var continuation: AsyncStream<LogMessage>.Continuation
+  private var cancellable: AnyCancellable?
 
   private var reachability = Reachability.unreachable
 
@@ -35,10 +38,27 @@ class Logger {
 
     let keyWindow = UIApplication.shared.firstKeyWindow
 
-    reachability = keyWindow?.traitCollection.sceneCaptureState == .active ? .unknown(Date.now) : .unreachable
+    let isCaptured: Bool =
+      if #available(iOS 17.0, *) {
+        keyWindow?.traitCollection.sceneCaptureState == .active
+      } else {
+        keyWindow?.screen.isCaptured == true
+      }
 
-    keyWindow?.registerForSceneCaptureStateChanges { [weak self] sceneCaptureState in
-      self?.reachability = sceneCaptureState == .active ? .unknown(Date.now) : .unreachable
+    reachability = isCaptured ? .unknown(Date.now) : .unreachable
+
+    if #available(iOS 17.0, *) {
+      keyWindow?.registerForSceneCaptureStateChanges { [weak self] sceneCaptureState in
+        self?.reachability = sceneCaptureState == .active ? .unknown(Date.now) : .unreachable
+      }
+    } else {
+      cancellable = NotificationCenter.default.publisher(for: UIScreen.capturedDidChangeNotification)
+        .sink { [weak self] notification in
+          guard let screen = notification.object as? UIScreen else { return }
+          guard UIApplication.shared.firstKeyWindow?.screen == screen else { return }
+
+          self?.reachability = screen.isCaptured ? .unknown(Date.now) : .unreachable
+        }
     }
 
     Task {
