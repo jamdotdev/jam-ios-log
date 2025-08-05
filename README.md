@@ -4,7 +4,7 @@ This framework lets you send log events to [Jam for iOS](https://apps.apple.com/
 
 ## Supported Platforms
 
-- iOS 17.0+
+- iOS 15.0+
 
 ## Quick Start
 
