@@ -54,3 +54,7 @@ LoggingSystem.bootstrap { label in
   ])
 }
 ```
+
+## React Native
+
+JamLog is also available as a [React Native Expo module](https://github.com/jamdotdev/expo-jam-log).
