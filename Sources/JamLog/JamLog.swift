@@ -30,16 +30,15 @@ public enum JamLog {
   public static func log(
     _ message: String,
     level: LogMessage.Level,
+    includesTrace: Bool = true,
     file: String = #fileID,
     function: String = #function,
     line: UInt = #line
   ) {
     Task.detached {
-      let logMessage = LogMessage(
-        level: level,
-        message: message,
-        trace: .init(file: file, function: function, line: line)
-      )
+      let trace: LogMessage.Trace? = includesTrace ? .init(file: file, function: function, line: line) : nil
+
+      let logMessage = LogMessage(level: level, message: message, trace: trace)
 
       await Logger.shared.log(logMessage)
     }

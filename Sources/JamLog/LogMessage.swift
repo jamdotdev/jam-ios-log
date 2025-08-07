@@ -21,9 +21,9 @@ public struct LogMessage: Codable, Sendable {
 
   public let level: Level
   public let message: String
-  public let trace: Trace
+  public let trace: Trace?
 
-  public init(level: Level, message: String, trace: Trace) {
+  public init(level: Level, message: String, trace: Trace?) {
     self.level = level
     self.message = message
     self.trace = trace
